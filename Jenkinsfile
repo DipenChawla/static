@@ -3,14 +3,12 @@ pipeline
     agent any
     stages
     {
-        stage("Build")
+        stage("Upload AWS")
         {
             steps{
-                sh "echo 'Hello Word'"
-                sh '''
-                echo "Multiple Lines do work?"
-                echo "They do!!!"
-                '''
+                withAWS(region: 'eu-west-1', credentials:'aws-static') {
+                    s3Upload(file:'index.html', bucket:'udacity-cicd-static', path:'index.html')
+                }
             }
         }
     }
