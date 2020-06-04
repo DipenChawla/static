@@ -7,7 +7,7 @@ pipeline
         {
             steps{
                 withAWS(region: 'eu-west-1', credentials:'aws-static') {
-                    s3Upload(file:'index.html', bucket:'udacity-cicd-static', path:'index.html')
+                s3Upload(file:'index.html', bucket:'udacity-cicd-static', path:'index.html')
                 }
             }
         }
